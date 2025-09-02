@@ -1,0 +1,50 @@
+import random
+
+# Tritype groups
+tritype_pur = ['SS', 'EX', 'UN']
+tritype_int = ['AY', 'CY', 'BG']
+tritype_sur = ['FD', 'SY', 'SM']
+
+# EI Stacking
+ei_stack = [
+    'SIP', 'SPI', 'ISP', 'IPS', 'PSI', 'PIS']
+
+# Full AP types
+ap_types = [
+    'EVLF', 'ELVF', 'FVLE', 'FLVE', 'EVFL', 'EFVL',
+    'LVFE', 'LFVE', 'VLFE', 'VFLE', 'ELFV', 'EFLV',
+    'VEFL', 'VFEL', 'LEFV', 'LFEV', 'VLEF', 'VELF',
+    'FLEV', 'FELV', 'FEVL', 'FVEL', 'LEVF', 'LVEF'
+]
+
+# Generate subtypes (1-x format)
+def generate_subtypes():
+    return [f"{i}-{random.randint(1, 4)}" for i in range(1, 5)]
+
+# Generate full archetype
+def generate_typology_archetype():
+    pur = random.choice(tritype_pur)
+    intp = random.choice(tritype_int)
+    sur = random.choice(tritype_sur)
+    stacking = random.choice(ei_stack)
+    ap = random.choice(ap_types)
+    subtypes = generate_subtypes()
+
+    return {
+        "Attitudinal Psyche": ap,
+        "AP Subtypes": subtypes,
+        "SUR": sur,
+        "INT": intp,
+        "PUR": pur,
+        "Expanded Instincts Stacking": stacking
+    }
+
+# Run & display
+if __name__ == "__main__":
+    profile = generate_typology_archetype()
+    print("\nRandom AP x EI Archetype:")
+    for key, value in profile.items():
+        if isinstance(value, list):
+            print(f"{key}: {', '.join(value)}")
+        else:
+            print(f"{key}: {value}")
