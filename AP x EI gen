@@ -19,7 +19,7 @@ ap_types = [
 
 # Generate subtypes (1-x format)
 def generate_subtypes():
-    return [f"{i}-{random.randint(1, 4)}" for i in range(1, 5)]
+    return [f"{i}-{random.randint(0, 4)}" for i in range(1, 5)]
 
 # Generate full archetype
 def generate_typology_archetype():
@@ -48,3 +48,4 @@ if __name__ == "__main__":
             print(f"{key}: {', '.join(value)}")
         else:
             print(f"{key}: {value}")
+
